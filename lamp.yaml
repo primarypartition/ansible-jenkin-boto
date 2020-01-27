@@ -1,0 +1,6 @@
+---
+- hosts: node1
+  become: yes
+  roles:
+   - apache
+   - php

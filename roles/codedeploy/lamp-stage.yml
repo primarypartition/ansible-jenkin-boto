@@ -1,0 +1,6 @@
+---
+- hosts: 54.202.225.70
+  become: yes
+  roles:
+    # - php
+    - codedeploy

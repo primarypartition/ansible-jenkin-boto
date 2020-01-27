@@ -1,0 +1,53 @@
+---
+# tasks file for php
+- name: Add PHP 7 PPA repository
+  become: true
+  apt_repository:
+   repo: 'ppa:ondrej/php'
+
+- name: Install PHP 7 most common packages
+  apt: 
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - software-properties-common
+    - php7.3
+    - php7.3-gd
+    - php7.3-zip 
+    - php7.3-intl
+    - git    
+    - mcrypt
+    # - php7.3-imap
+    # - php7.3-mbstring
+    # - php7.3-mysqlnd
+    # - php7.3-opcache
+    # - php7.3-pdo
+    # - php7.3-pecl-apcu
+    # - php7.3-common
+    # - php7.3-mysql 
+    # - php7.3-xml 
+    # - php7.3-xmlrpc 
+    # - php7.3-curl 
+    # - php7.3-gd 
+    # - php7.3-imagick 
+    # - php7.3-cli 
+    # - php7.3-dev 
+    # - php7.3-imap 
+    # - php7.3-mbstring 
+    # - php7.3-opcache 
+    # - php7.3-soap 
+    # - php7.3-cli
+    # - php7.3-json
+    # - php7.3-mcrypt
+    # - php7.3-sqlite   
+  notify: restart apache2
+
+- name: remove index.html default file
+  command: rm -rf /var/www/html/index.html
+  
+- name: Upload the sample index.php file to /var/www/html
+  copy:
+    src: index.php
+    dest: /var/www/html/
+    owner: vagrant
+    group: vagrant

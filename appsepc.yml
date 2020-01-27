@@ -1,0 +1,8 @@
+version: 0.0
+os: linux
+files:
+  - source: Welcome.php
+    destination: /var/www/html/
+  
+  - source: index.php
+    destination: /var/www/html/

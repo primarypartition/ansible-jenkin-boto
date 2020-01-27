@@ -1,0 +1,7 @@
+---
+# tasks file for phpunit
+- name: Download the tool and place it in a PATH directory
+  get_url: 
+    url: https://phar.phpunit.de/phpunit-6.4.phar
+    dest: /usr/local/bin/phpunit 
+    mode: 555
